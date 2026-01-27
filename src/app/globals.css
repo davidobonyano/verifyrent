@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* FORGE Design System for VerifyRent */
+  --color-vr-navy: #0A0A0A;
+  /* Deep Iron Black */
+  --color-vr-iron: #1A1A1A;
+  /* Foundry Charcoal */
+  --color-vr-teal: #B8860B;
+  /* Muted Brass (High Trust) */
+  --color-vr-copper: #B87333;
+  /* Aged Copper (Accents) */
+  --color-vr-silver: #262626;
+  /* Dark Industrial Border */
+  --color-vr-gray: #1E1E1E;
+  /* Secondary Surface */
+  --color-vr-cream: #F5E6CC;
+  /* Antique White (Text) */
+
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  --background: #0A0A0A;
+  --foreground: #F5E6CC;
+}
+
+/* Base styles */
+@layer base {
+  * {
+    border-color: var(--color-vr-silver);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
+    @apply font-serif;
+  }
+}
+
+/* FORGE Design Utilities */
+@utility transition-heavy {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  transition-duration: 500ms;
+}
+
+@utility forge-card {
+  background-color: var(--color-vr-iron);
+  border: 1px solid var(--color-vr-silver);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+@utility burn-in {
+  animation: burn-in-animation 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes burn-in-animation {
+  0% {
+    filter: blur(20px) brightness(0.2);
+    opacity: 0;
+    transform: scale(1.02);
+  }
+
+  100% {
+    filter: blur(0) brightness(1);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+/* Patina Overlay */
+.patina::after {
+  content: "";
+  @apply absolute inset-0 pointer-events-none opacity-[0.03];
+  background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+}
+
+/* Custom Selection */
+::selection {
+  @apply bg-vr-teal text-vr-navy;
+}
+
+/* Marquee for Hero */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Forge Button utilties */
+@utility btn-primary {
+  @apply px-8 py-4 bg-vr-teal text-vr-navy rounded-none font-bold uppercase tracking-widest hover:brightness-110 transition-heavy border-b-4 border-vr-copper;
+}
+
+@utility btn-outline {
+  @apply px-8 py-4 border-2 border-vr-silver text-vr-cream rounded-none font-bold uppercase tracking-widest hover:border-vr-teal hover:text-vr-teal transition-heavy;
+}
+
+@utility section-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
