@@ -45,7 +45,7 @@ export function Navbar() {
                     <Link href="/verify" className="text-[10px] font-bold uppercase tracking-[0.2em] text-vr-cream/60 hover:text-vr-teal transition-heavy">
                         Verify by ID
                     </Link>
-                    <Link href="#how-it-works" className="text-[10px] font-bold uppercase tracking-[0.2em] text-vr-cream/60 hover:text-vr-teal transition-heavy">
+                    <Link href="/#how-it-works" className="text-[10px] font-bold uppercase tracking-[0.2em] text-vr-cream/60 hover:text-vr-teal transition-heavy">
                         How it Works
                     </Link>
                     <div className="flex items-center gap-6 pl-8 border-l border-vr-silver/30">
@@ -76,7 +76,7 @@ export function Navbar() {
                     <Link href="/verify" className="text-sm font-bold uppercase tracking-widest text-vr-cream" onClick={() => setIsMobileMenuOpen(false)}>
                         Verify by ID
                     </Link>
-                    <Link href="#how-it-works" className="text-sm font-bold uppercase tracking-widest text-vr-cream" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Link href="/#how-it-works" className="text-sm font-bold uppercase tracking-widest text-vr-cream" onClick={() => setIsMobileMenuOpen(false)}>
                         How it Works
                     </Link>
                     <hr className="border-vr-silver/20" />

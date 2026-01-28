@@ -63,13 +63,13 @@ export default function PropertiesPage() {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mb-20"
+                        className="mb-12"
                     >
-                        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12 border-b border-vr-silver/10 pb-16">
+                        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-8 border-b border-vr-silver/10 pb-8">
                             <div className="max-w-2xl">
-                                <span className="text-xs font-bold uppercase tracking-[0.4em] text-vr-teal mb-4 block">The Registry</span>
-                                <h1 className="text-5xl md:text-8xl font-serif font-bold text-vr-cream leading-none mb-4">FIND YOUR <br /> <span className="text-vr-teal italic">NEXT HOME.</span></h1>
-                                <p className="text-vr-cream/40 text-lg font-light leading-relaxed">Discovery verified listings across Nigeria. Each record held in our kiln of trust.</p>
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-vr-teal mb-2 block">The Registry</span>
+                                <h1 className="text-4xl md:text-6xl font-serif font-bold text-vr-cream leading-none mb-3 uppercase tracking-tighter">FIND YOUR <br /> <span className="text-vr-teal italic">NEXT HOME.</span></h1>
+                                <p className="text-vr-cream/50 text-sm font-medium leading-relaxed">Discovery verified listings across Nigeria. Each record held in our kiln of trust.</p>
                             </div>
 
                             {/* Detection Status (Industrial) */}
@@ -84,9 +84,9 @@ export default function PropertiesPage() {
                         </div>
 
                         {/* Registry Filter (The Console) */}
-                        <div className="bg-vr-iron p-2 border border-vr-silver/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
-                                <div className="bg-vr-navy p-6 border border-vr-silver/5">
+                        <div className="bg-vr-iron p-1 border border-vr-silver/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+                                <div className="bg-vr-navy p-4 border border-vr-silver/5">
                                     <CustomSelect
                                         label="STATE ORIGIN"
                                         placeholder="Select State"
@@ -96,10 +96,10 @@ export default function PropertiesPage() {
                                             setSelectedState(val);
                                             setSelectedLga("");
                                         }}
-                                        icon={<MapPin className="text-vr-teal/40 w-4 h-4" />}
+                                        icon={<MapPin className="text-vr-teal/40 w-3 h-3" />}
                                     />
                                 </div>
-                                <div className="bg-vr-navy p-6 border border-vr-silver/5">
+                                <div className="bg-vr-navy p-4 border border-vr-silver/5">
                                     <CustomSelect
                                         label="DISTRICT / LGA"
                                         placeholder={selectedState ? "Select LGA" : "Awaiting State..."}
@@ -107,22 +107,22 @@ export default function PropertiesPage() {
                                         value={selectedLga}
                                         onChange={setSelectedLga}
                                         disabled={!selectedState}
-                                        icon={<Filter className="text-vr-teal/40 w-4 h-4" />}
+                                        icon={<Filter className="text-vr-teal/40 w-3 h-3" />}
                                     />
                                 </div>
-                                <div className="bg-vr-navy p-6 border border-vr-silver/5">
+                                <div className="bg-vr-navy p-4 border border-vr-silver/5">
                                     <CustomSelect
                                         label="ASSET CLASS"
                                         placeholder="Any Type"
                                         options={PROPERTY_TYPES}
                                         value={selectedType}
                                         onChange={setSelectedType}
-                                        icon={<Home className="text-vr-teal/40 w-4 h-4" />}
+                                        icon={<Home className="text-vr-teal/40 w-3 h-3" />}
                                     />
                                 </div>
-                                <Button className="h-full btn-primary !shadow-none !border-0 flex flex-col items-center justify-center gap-2 group">
-                                    <Search className="w-6 h-6 group-hover:scale-110 transition-heavy" />
-                                    <span className="text-[10px] tracking-[0.3em]">EXECUTE SEARCH</span>
+                                <Button className="h-full py-6 btn-primary !shadow-none !border-0 flex flex-col items-center justify-center gap-1 group">
+                                    <Search className="w-5 h-5 group-hover:scale-110 transition-heavy" />
+                                    <span className="text-[9px] tracking-[0.2em] font-bold">SEARCH REGISTRY</span>
                                 </Button>
                             </div>
                         </div>
@@ -137,44 +137,46 @@ export default function PropertiesPage() {
                             ))}
                         </div>
                     ) : (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="py-32 bg-vr-iron border border-vr-silver/10 text-center relative overflow-hidden"
-                        >
-                            {/* Empty background texture */}
-                            <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/p6.png')]" />
+                        <div className="space-y-0">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="py-16 bg-vr-iron border border-vr-silver/10 text-center relative overflow-hidden"
+                            >
+                                {/* Empty background texture */}
+                                <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/p6.png')]" />
 
-                            <div className="relative z-10">
-                                <div className="w-24 h-24 bg-vr-navy border border-vr-silver/10 flex items-center justify-center mx-auto mb-8">
-                                    <Search className="w-10 h-10 text-vr-teal/20" />
-                                </div>
-                                <h2 className="text-4xl font-serif font-bold text-vr-cream mb-4 uppercase tracking-tight">Search Exhausted</h2>
-                                <p className="text-vr-cream/40 max-w-md mx-auto mb-12 font-medium">
-                                    We couldn't verify exactly what you're looking for in <span className="text-vr-teal">{selectedLga || selectedState || "this area"}</span>.
-                                    However, our registry holds strong alternatives nearby.
-                                </p>
-                            </div>
-                        </motion.div>
-                    )}
-
-                    {/* Smart Suggestions Section */}
-                    {filteredProperties.length === 0 && suggestedProperties.length > 0 && (
-                        <div className="mt-40">
-                            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
-                                <div className="max-w-xl">
-                                    <span className="text-xs font-bold uppercase tracking-[0.4em] text-vr-teal mb-4 block">Recommended Records</span>
-                                    <h3 className="text-3xl font-serif font-bold text-vr-cream">NEAREST VERIFIED ASSETS</h3>
-                                </div>
-                                <div className="h-px flex-1 bg-vr-silver/10 hidden md:block mb-3" />
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                                {suggestedProperties.map((property, index) => (
-                                    <div key={property.id}>
-                                        <PropertyCard {...property} />
+                                <div className="relative z-10 px-6">
+                                    <div className="w-16 h-16 bg-vr-navy border border-vr-silver/10 flex items-center justify-center mx-auto mb-6">
+                                        <Search className="w-6 h-6 text-vr-teal/20" />
                                     </div>
-                                ))}
-                            </div>
+                                    <h2 className="text-3xl font-serif font-bold text-vr-cream mb-2 uppercase tracking-tight">Search Exhausted</h2>
+                                    <p className="text-vr-cream/50 max-w-sm mx-auto font-medium text-xs leading-relaxed">
+                                        We couldn't verify exactly what you're looking for in <span className="text-vr-teal">{selectedLga || selectedState || "this area"}</span>.
+                                        <br />However, our registry holds strong alternatives nearby.
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            {/* Smart Suggestions Section */}
+                            {suggestedProperties.length > 0 && (
+                                <div className="mt-0">
+                                    <div className="flex flex-col md:flex-row justify-between items-end gap-4 bg-vr-navy p-8 border-x border-vr-silver/10">
+                                        <div className="max-w-xl">
+                                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-vr-teal mb-2 block">Recommended Records</span>
+                                            <h3 className="text-xl font-serif font-bold text-vr-cream uppercase tracking-tight">NEAREST VERIFIED ASSETS</h3>
+                                        </div>
+                                        <div className="h-px flex-1 bg-vr-silver/10 hidden md:block mb-2" />
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-vr-silver/10">
+                                        {suggestedProperties.map((property, index) => (
+                                            <div key={property.id} className="border-r border-b last:border-r-0 border-vr-silver/10">
+                                                <PropertyCard {...property} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     )}
 

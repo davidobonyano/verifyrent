@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, Mail, Lock, ArrowRight, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,25 +22,31 @@ export default function LoginPage() {
     return (
         <div className="min-h-screen bg-vr-navy flex flex-col md:flex-row">
             {/* Left side: branding/image */}
-            <div className="hidden md:flex md:w-5/12 bg-vr-iron p-16 flex-col justify-between text-vr-cream relative overflow-hidden border-r border-vr-silver/10">
-                <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-                <div className="absolute top-0 right-0 w-96 h-96 bg-vr-teal/5 blur-[100px] -mr-48 -mt-48" />
+            <div className="hidden md:flex md:w-5/12 p-16 flex-col justify-between text-vr-cream relative overflow-hidden border-r border-vr-silver/10 group">
+                <Image
+                    src="/images/verifyrent_bold_ambassador_1769584850475.png"
+                    alt="VerifyRent Ambassador"
+                    fill
+                    className="object-cover transition-transform duration-[20s] ease-linear group-hover:scale-110"
+                    priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-vr-navy/80 via-vr-navy/40 to-vr-navy/90 z-10" />
 
-                <Link href="/" className="flex items-center gap-3 relative z-10 w-fit group">
-                    <div className="bg-vr-teal p-2 rounded-none transition-heavy group-hover:rotate-180">
+                <Link href="/" className="flex items-center gap-3 relative z-20 w-fit group/logo">
+                    <div className="bg-vr-teal p-2 rounded-none transition-heavy group-hover/logo:rotate-180">
                         <ShieldCheck className="w-6 h-6 text-vr-navy" />
                     </div>
-                    <span className="text-2xl font-serif font-bold tracking-tight uppercase">
+                    <span className="text-2xl font-serif font-bold tracking-tight uppercase drop-shadow-lg">
                         VERIFY<span className="text-vr-teal">RENT</span>
                     </span>
                 </Link>
 
-                <div className="relative z-10 space-y-8">
-                    <h1 className="text-6xl font-serif font-bold leading-[0.9]">ACCESS THE <br /> <span className="text-vr-teal italic">REGISTRY.</span></h1>
-                    <p className="text-vr-cream/40 text-lg max-w-sm font-light leading-relaxed">Enter your credentials to manage your verified assets and tenancy records.</p>
+                <div className="relative z-20 space-y-8">
+                    <h1 className="text-6xl font-serif font-bold leading-[0.9] drop-shadow-2xl">ACCESS THE <br /> <span className="text-vr-teal italic">REGISTRY.</span></h1>
+                    <p className="text-vr-cream/70 text-lg max-w-sm font-bold leading-relaxed drop-shadow-md uppercase tracking-wider">The neutral trust layer for Nigerian Real Estate. We audit the person, the paper, and the property.</p>
                 </div>
 
-                <div className="text-[10px] font-bold text-vr-teal/30 tracking-[0.4em] uppercase relative z-10">
+                <div className="text-[10px] font-bold text-vr-teal tracking-[0.4em] uppercase relative z-20 drop-shadow-lg">
                     National Trust Infrastructure / Forge No. 01
                 </div>
             </div>

@@ -18,6 +18,9 @@ const sans = Space_Grotesk({
 export const metadata: Metadata = {
   title: "VerifyRent | Trusted Property Verification & Rental Platform",
   description: "Reducing rental fraud in Nigeria through path-verified listings. Secure, transparent, and direct property rentals for tenants, landlords, and agents.",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({

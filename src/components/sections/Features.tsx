@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import { UserCheck, ShieldAlert, Building2, Smartphone, CheckCircle2, MapPin, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import Image from "next/image";
+
 export function Features() {
     return (
         <section className="py-32 bg-vr-navy relative overflow-hidden" id="verification">
             {/* Ambient emerald glow */}
-            <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-vr-teal/5 blur-[100px] -ml-48" />
+            <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-vr-teal/5 blur-[100px] -ml-44" />
 
             <div className="section-container">
                 <div className="flex flex-col mb-24">
@@ -23,25 +25,29 @@ export function Features() {
                             title: "DEED AUDIT",
                             label: "The Core",
                             desc: "Every land title is verified against government registries. No fake papers permitted.",
-                            bg: "bg-vr-iron"
+                            bg: "bg-vr-iron",
+                            image: "/images/deed_audit_visual_1769585504330.png"
                         },
                         {
                             title: "BIOMETRIC LOG",
                             label: "The Grain",
                             desc: "Agents must log GPS and biometric check-ins at the property. Proof of presence is mandatory.",
-                            bg: "bg-vr-navy"
+                            bg: "bg-vr-navy",
+                            image: "/images/biometric_log_visual_1769585694956.png"
                         },
                         {
                             title: "ESCROW IRON",
                             label: "The Bond",
                             desc: "Payment is held in our neutral trust layer until keys are successfully exchanged.",
-                            bg: "bg-vr-iron"
+                            bg: "bg-vr-iron",
+                            image: "/images/hero_luxury_apartment_reforge_1769584491562.png" // Fallback since escrow failed
                         },
                         {
                             title: "DIRECT ACCESS",
                             label: "The Edge",
                             desc: "Cut through the middleman. Interact directly with verified landlords to save on fees.",
-                            bg: "bg-vr-navy"
+                            bg: "bg-vr-navy",
+                            image: "/images/verifyrent_bold_ambassador_1769584850475.png" // Use ambassador as the 'direct' face
                         }
                     ].map((feature, i) => (
                         <motion.div
@@ -50,16 +56,28 @@ export function Features() {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className={`${feature.bg} p-10 border border-vr-silver/10 hover:border-vr-teal transition-heavy group burn-in`}
+                            className={`${feature.bg} relative overflow-hidden border border-vr-silver/10 hover:border-vr-teal/50 transition-heavy group burn-in`}
                         >
-                            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-vr-teal mb-6 block opacity-50">{feature.label}</span>
-                            <h4 className="text-xl font-serif font-bold text-vr-cream mb-4">{feature.title}</h4>
-                            <p className="text-xs text-vr-cream/40 leading-relaxed mb-12">
-                                {feature.desc}
-                            </p>
-                            <div className="flex justify-between items-center group-hover:translate-x-2 transition-heavy">
-                                <span className="text-[8px] font-bold uppercase tracking-widest text-vr-teal">Details</span>
-                                <ChevronRight className="w-4 h-4 text-vr-teal" />
+                            <div className="h-40 relative opacity-40 group-hover:opacity-60 transition-heavy overflow-hidden grayscale group-hover:grayscale-0">
+                                <Image
+                                    src={feature.image}
+                                    alt={feature.title}
+                                    fill
+                                    className="object-cover scale-110 group-hover:scale-100 transition-heavy"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-vr-iron via-transparent to-transparent" />
+                            </div>
+
+                            <div className="p-8 relative z-10">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-vr-teal mb-4 block opacity-50">{feature.label}</span>
+                                <h4 className="text-xl font-serif font-bold text-vr-cream mb-4">{feature.title}</h4>
+                                <p className="text-xs text-vr-cream/40 leading-relaxed mb-8">
+                                    {feature.desc}
+                                </p>
+                                <div className="flex justify-between items-center group-hover:translate-x-1 transition-heavy">
+                                    <span className="text-[8px] font-bold uppercase tracking-widest text-vr-teal">Audit Protocol</span>
+                                    <ChevronRight className="w-4 h-4 text-vr-teal" />
+                                </div>
                             </div>
                         </motion.div>
                     ))}

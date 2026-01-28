@@ -78,7 +78,7 @@ export function HowItWorks() {
                             <p className="text-vr-cream/40 text-sm leading-relaxed mb-8">
                                 House hunting, simplified. Search verified listings, skip the fake agents, and move into your dream home with 100% certainty.
                             </p>
-                            <Button className="btn-primary w-full">FIND MY HOME</Button>
+                            <Button className="btn-primary w-full" onClick={() => window.location.href = '/verify'}>FIND MY HOME</Button>
                         </div>
                     </div>
                     <div className="bg-vr-iron p-12 flex flex-col justify-between">
@@ -87,7 +87,7 @@ export function HowItWorks() {
                             <p className="text-vr-cream/40 text-sm leading-relaxed mb-8">
                                 Direct listings with zero commission. Forge a direct bond with your tenants through verified transparency.
                             </p>
-                            <Button variant="outline" className="btn-outline w-full text-xs">LIST PROPERTY</Button>
+                            <Button variant="outline" className="btn-outline w-full text-xs" onClick={() => window.location.href = '/auth/register'}>LIST PROPERTY</Button>
                         </div>
                     </div>
                     <div className="bg-vr-navy p-12 flex flex-col justify-between">
@@ -96,7 +96,7 @@ export function HowItWorks() {
                             <p className="text-vr-cream/40 text-sm leading-relaxed mb-8">
                                 Professional tools for serious brokers. We verify your portfolio so you can command the trust you deserve.
                             </p>
-                            <Button variant="outline" className="btn-outline w-full text-xs">JOIN THE GUILD</Button>
+                            <Button variant="outline" className="btn-outline w-full text-xs" onClick={() => window.location.href = '/auth/register'}>JOIN THE GUILD</Button>
                         </div>
                     </div>
                 </div>

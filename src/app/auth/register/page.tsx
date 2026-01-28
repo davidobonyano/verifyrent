@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, Mail, Lock, User, Briefcase, Home, ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -28,14 +29,21 @@ export default function RegisterPage() {
     return (
         <div className="min-h-screen bg-vr-navy flex flex-col md:flex-row">
             {/* Left side: branding/benefits */}
-            <div className="hidden md:flex md:w-5/12 bg-vr-iron p-16 flex-col justify-between text-vr-cream relative overflow-hidden border-r border-vr-silver/10">
-                <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+            <div className="hidden md:flex md:w-5/12 p-16 flex-col justify-between text-vr-cream relative overflow-hidden border-r border-vr-silver/10 group">
+                <Image
+                    src="/images/verifyrent_bold_ambassador_1769584850475.png"
+                    alt="VerifyRent Ambassador"
+                    fill
+                    className="object-cover transition-transform duration-[20s] ease-linear group-hover:scale-110"
+                    priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-vr-navy/80 via-vr-navy/40 to-vr-navy/90 z-10" />
 
-                <Link href="/" className="flex items-center gap-3 relative z-10 w-fit group">
-                    <div className="bg-vr-teal p-2 rounded-none transition-heavy group-hover:rotate-180">
+                <Link href="/" className="flex items-center gap-3 relative z-20 w-fit group/logo">
+                    <div className="bg-vr-teal p-2 rounded-none transition-heavy group-hover/logo:rotate-180">
                         <ShieldCheck className="w-6 h-6 text-vr-navy" />
                     </div>
-                    <span className="text-2xl font-serif font-bold tracking-tight uppercase">
+                    <span className="text-2xl font-serif font-bold tracking-tight uppercase drop-shadow-md">
                         VERIFY<span className="text-vr-teal">RENT</span>
                     </span>
                 </Link>
@@ -50,15 +58,15 @@ export default function RegisterPage() {
                                 exit={{ opacity: 0, x: 20 }}
                                 className="space-y-8"
                             >
-                                <h1 className="text-6xl font-serif font-bold leading-[0.9]">FIND A HOME <br /><span className="text-vr-teal italic">WITHOUT FEAR.</span></h1>
-                                <p className="text-vr-cream/40 text-lg font-light leading-relaxed max-w-sm">Join 10,000+ Nigerians using VerifyRent to discover physically inspected properties and verified landlords.</p>
-                                <div className="space-y-6 pt-8">
+                                <h1 className="text-6xl font-serif font-bold leading-[0.9] drop-shadow-2xl">FIND A HOME <br /><span className="text-vr-teal italic">WITHOUT FEAR.</span></h1>
+                                <p className="text-vr-cream/70 text-lg font-bold leading-relaxed max-w-sm drop-shadow-md">Join 10,000+ Nigerians discovering physically inspected properties and verified landlords.</p>
+                                <div className="space-y-6 pt-8 relative z-20">
                                     {["Zero ghost listings", "Direct contact with verified owners", "Secure booking infrastructure"].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 group">
-                                            <div className="w-6 h-6 rounded-none bg-vr-teal/10 flex items-center justify-center border border-vr-teal/20 group-hover:bg-vr-teal group-hover:text-vr-navy transition-heavy">
+                                        <div key={i} className="flex items-center gap-4 group/item">
+                                            <div className="w-6 h-6 rounded-none bg-vr-teal/20 flex items-center justify-center border border-vr-teal/50 group-hover/item:bg-vr-teal group-hover/item:text-vr-navy transition-heavy">
                                                 <CheckCircle2 className="w-3 h-3" />
                                             </div>
-                                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-vr-cream/60 group-hover:text-vr-cream transition-heavy">{item}</span>
+                                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-vr-cream group-hover/item:text-vr-teal transition-heavy drop-shadow-sm">{item}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -71,15 +79,15 @@ export default function RegisterPage() {
                                 exit={{ opacity: 0, x: 20 }}
                                 className="space-y-8"
                             >
-                                <h1 className="text-6xl font-serif font-bold leading-[0.9]">LIST WITH <br /><span className="text-vr-teal italic">NATIONAL TRUST.</span></h1>
-                                <p className="text-vr-cream/40 text-lg font-light leading-relaxed max-w-sm">Position your properties in Nigeria's only high-integrity rental marketplace. Get the 'Verified' badge today.</p>
-                                <div className="space-y-6 pt-8">
+                                <h1 className="text-6xl font-serif font-bold leading-[0.9] drop-shadow-2xl">LIST WITH <br /><span className="text-vr-teal italic text-5xl">NATIONAL TRUST.</span></h1>
+                                <p className="text-vr-cream/70 text-lg font-bold leading-relaxed max-w-sm drop-shadow-md">Position your properties in Nigeria's only high-integrity rental marketplace.</p>
+                                <div className="space-y-6 pt-8 relative z-20">
                                     {["Get the Verified Badge", "Advanced tenant screening", "Zero listing fees for 6 months"].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 group">
-                                            <div className="w-6 h-6 rounded-none bg-vr-teal/10 flex items-center justify-center border border-vr-teal/20 group-hover:bg-vr-teal group-hover:text-vr-navy transition-heavy">
+                                        <div key={i} className="flex items-center gap-4 group/item">
+                                            <div className="w-6 h-6 rounded-none bg-vr-teal/20 flex items-center justify-center border border-vr-teal/50 group-hover/item:bg-vr-teal group-hover/item:text-vr-navy transition-heavy">
                                                 <CheckCircle2 className="w-3 h-3" />
                                             </div>
-                                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-vr-cream/60 group-hover:text-vr-cream transition-heavy">{item}</span>
+                                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-vr-cream group-hover/item:text-vr-teal transition-heavy drop-shadow-sm">{item}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -88,7 +96,7 @@ export default function RegisterPage() {
                     </AnimatePresence>
                 </div>
 
-                <div className="text-[10px] font-bold text-vr-teal/30 tracking-[0.4em] uppercase relative z-10">
+                <div className="text-[10px] font-bold text-vr-teal tracking-[0.4em] uppercase relative z-20 drop-shadow-lg">
                     © 2026 VerifyRent Infrastructure / Registry Enrollment
                 </div>
             </div>

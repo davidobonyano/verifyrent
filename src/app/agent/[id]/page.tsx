@@ -27,88 +27,90 @@ export default function AgentProfile() {
     const [activeTab, setActiveTab] = useState("listings");
 
     return (
-        <div className="flex flex-col min-h-screen bg-[#F8FAFC]">
+        <div className="flex flex-col min-h-screen bg-vr-navy">
             <Navbar />
 
             <main className="flex-grow pt-24 pb-20">
                 {/* Hero Profile Header */}
                 <div className="relative">
-                    {/* Solid Navy Header Background */}
-                    <div className="h-48 md:h-64 bg-vr-navy relative overflow-hidden">
-                        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.05),transparent)]" />
+                    {/* Industrial Header Background */}
+                    <div className="h-48 md:h-72 bg-vr-iron relative overflow-hidden border-b border-vr-silver/10">
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/p6.png')]" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-vr-navy" />
                     </div>
 
-                    <div className="section-container relative -mt-16 md:-mt-24">
-                        <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-vr-navy/5 p-6 md:p-10 border border-vr-silver/30">
-                            <div className="flex flex-col md:flex-row gap-8 items-start">
-                                {/* Profile Image */}
+                    <div className="section-container relative -mt-24 md:-mt-32">
+                        <div className="bg-vr-iron/50 backdrop-blur-md border border-vr-silver/10 p-8 md:p-12 relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-heavy">
+                                <ShieldCheck className="w-48 h-48 rotate-12" />
+                            </div>
+
+                            <div className="flex flex-col md:flex-row gap-12 items-start relative z-10">
+                                {/* Profile Image (Industrial Frame) */}
                                 <div className="relative shrink-0">
-                                    <div className="w-32 h-32 md:w-48 md:h-48 rounded-[2rem] overflow-hidden border-4 border-white shadow-xl">
-                                        <img
-                                            src={agent.image}
-                                            alt={agent.name}
-                                            className="w-full h-full object-cover"
-                                        />
+                                    <div className="w-40 h-40 md:w-56 md:h-56 overflow-hidden border border-vr-silver/20 bg-vr-navy p-2 shadow-2xl">
+                                        <div className="w-full h-full relative overflow-hidden">
+                                            <img
+                                                src={agent.image}
+                                                alt={agent.name}
+                                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-heavy scale-110 hover:scale-100"
+                                            />
+                                        </div>
                                     </div>
                                     {agent.isVerified && (
-                                        <div className="absolute -bottom-2 -right-2 bg-vr-teal text-white p-2 rounded-xl shadow-lg border-2 border-white">
-                                            <BadgeCheck className="w-6 h-6" />
+                                        <div className="absolute -bottom-4 -right-4 bg-vr-teal text-vr-navy p-3 shadow-[8px_8px_0_rgba(0,0,0,0.5)] border border-vr-navy">
+                                            <BadgeCheck className="w-8 h-8" />
                                         </div>
                                     )}
                                 </div>
 
                                 {/* Agent Info */}
                                 <div className="flex-grow">
-                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                                         <div>
-                                            <h1 className="text-3xl md:text-4xl font-bold text-vr-navy mb-1 flex items-center gap-3">
+                                            <span className="text-[10px] font-bold text-vr-teal uppercase tracking-[0.4em] mb-3 block">Certified Provider</span>
+                                            <h1 className="text-4xl md:text-6xl font-serif font-black text-vr-cream mb-4 uppercase tracking-tighter leading-none">
                                                 {agent.name}
-                                                <span className="text-xs font-semibold px-3 py-1 bg-vr-teal/10 text-vr-teal rounded-full uppercase tracking-wider">
-                                                    {agent.isVerified ? `Verified ${agent.role.includes('Landlord') ? 'Landlord' : 'Agent'}` : agent.role}
-                                                </span>
                                             </h1>
-                                            <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-vr-navy/60 font-medium">
-                                                <span className="flex items-center gap-1.5 px-3 py-1 bg-vr-gray rounded-lg text-xs">
-                                                    <BadgeCheck className="w-3.5 h-3.5 text-vr-teal" /> {agent.verificationLevel} Status
+                                            <div className="flex flex-wrap items-center gap-y-3 gap-x-6">
+                                                <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-vr-cream/40">
+                                                    <MapPin className="w-3.5 h-3.5 text-vr-teal" /> {agent.location}
                                                 </span>
-                                                <span className="flex items-center gap-1.5">
-                                                    <MapPin className="w-4 h-4" /> {agent.location}
-                                                </span>
-                                                <span className="flex items-center gap-1.5 text-vr-teal">
-                                                    <CheckCircle2 className="w-4 h-4" /> Trusted Partner
+                                                <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-vr-teal">
+                                                    <ShieldCheck className="w-3.5 h-3.5" /> Registry Level: {agent.verificationLevel}
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="flex gap-3">
-                                            <Button variant="outline" className="rounded-xl border-vr-silver hover:bg-vr-gray">
-                                                <Share2 className="w-4 h-4 mr-2" /> Share
-                                            </Button>
+                                        <div className="flex gap-4">
+                                            <button className="px-6 py-3 border border-vr-silver/10 text-[10px] font-bold uppercase tracking-widest text-vr-cream/60 hover:text-vr-teal hover:border-vr-teal transition-heavy">
+                                                <Share2 className="w-4 h-4" />
+                                            </button>
                                         </div>
                                     </div>
 
-                                    <p className="text-vr-navy/70 leading-relaxed max-w-3xl mb-8">
+                                    <p className="text-vr-cream/50 text-sm leading-relaxed max-w-2xl mb-10 font-medium">
                                         {agent.bio}
                                     </p>
 
-                                    {/* Quick Stats */}
-                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 md:p-6 bg-vr-gray/50 rounded-3xl border border-vr-silver/30">
-                                        <div className="text-center md:border-r border-vr-silver/50">
-                                            <div className="text-2xl font-bold text-vr-navy">{agent.stats.properties}</div>
-                                            <div className="text-xs font-semibold text-vr-navy/40 uppercase tracking-wider">Listings</div>
+                                    {/* Forged Stats Grid */}
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-1 p-1 bg-vr-navy border border-vr-silver/10 shadow-2xl">
+                                        <div className="bg-vr-iron/50 p-6 border border-vr-silver/5">
+                                            <div className="text-3xl font-serif font-bold text-vr-cream mb-1">{agent.stats.properties}</div>
+                                            <div className="text-[10px] font-bold text-vr-teal uppercase tracking-[0.2em]">Listings</div>
                                         </div>
-                                        <div className="text-center md:border-r border-vr-silver/50">
-                                            <div className="text-2xl font-bold text-vr-teal">{agent.stats.verified}%</div>
-                                            <div className="text-xs font-semibold text-vr-navy/40 uppercase tracking-wider">Verified</div>
+                                        <div className="bg-vr-iron/50 p-6 border border-vr-silver/5">
+                                            <div className="text-3xl font-serif font-bold text-vr-teal mb-1">{agent.stats.verified}%</div>
+                                            <div className="text-[10px] font-bold text-vr-cream/40 uppercase tracking-[0.2em]">Verified</div>
                                         </div>
-                                        <div className="text-center md:border-r border-vr-silver/50">
-                                            <div className="text-2xl font-bold text-emerald-500 flex items-center justify-center gap-1">
-                                                {agent.stats.rating} <Star className="w-5 h-5 fill-current" />
+                                        <div className="bg-vr-iron/50 p-6 border border-vr-silver/5">
+                                            <div className="text-3xl font-serif font-bold text-vr-cream mb-1 flex items-center gap-2">
+                                                {agent.stats.rating} <Star className="w-5 h-5 text-vr-teal fill-vr-teal" />
                                             </div>
-                                            <div className="text-xs font-semibold text-vr-navy/40 uppercase tracking-wider">Rating</div>
+                                            <div className="text-[10px] font-bold text-vr-cream/40 uppercase tracking-[0.2em]">Registry Rating</div>
                                         </div>
-                                        <div className="text-center">
-                                            <div className="text-2xl font-bold text-vr-navy">{agent.stats.reviews}</div>
-                                            <div className="text-xs font-semibold text-vr-navy/40 uppercase tracking-wider">Reviews</div>
+                                        <div className="bg-vr-iron/50 p-6 border border-vr-silver/5">
+                                            <div className="text-3xl font-serif font-bold text-vr-cream mb-1">{agent.stats.reviews}</div>
+                                            <div className="text-[10px] font-bold text-vr-cream/40 uppercase tracking-[0.2em]">Audit Records</div>
                                         </div>
                                     </div>
                                 </div>
@@ -118,37 +120,37 @@ export default function AgentProfile() {
                 </div>
 
                 {/* Profile Tabs & Content */}
-                <div className="section-container mt-12">
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr,350px] gap-12">
+                <div className="section-container mt-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr,400px] gap-16">
                         {/* Main Content Area */}
                         <div>
-                            <div className="flex gap-8 mb-8 border-b border-vr-silver/30">
+                            <div className="flex gap-12 mb-12 border-b border-vr-silver/10">
                                 <button
                                     onClick={() => setActiveTab("listings")}
-                                    className={`pb-4 text-sm font-bold uppercase tracking-widest transition-all relative ${activeTab === 'listings' ? 'text-vr-teal' : 'text-vr-navy/40'}`}
+                                    className={`pb-6 text-[10px] font-bold uppercase tracking-[0.3em] transition-all relative ${activeTab === 'listings' ? 'text-vr-teal' : 'text-vr-cream/20 hover:text-vr-cream/40'}`}
                                 >
-                                    My Listings ({agentProperties.length})
-                                    {activeTab === 'listings' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-1 bg-vr-teal rounded-full" />}
+                                    ASSET REGISTRY ({agentProperties.length})
+                                    {activeTab === 'listings' && <motion.div layoutId="tab-underline" className="absolute bottom-0 left-0 right-0 h-[2px] bg-vr-teal shadow-[0_0_10px_#B8860B]" />}
                                 </button>
                                 <button
                                     onClick={() => setActiveTab("verification")}
-                                    className={`pb-4 text-sm font-bold uppercase tracking-widest transition-all relative ${activeTab === 'verification' ? 'text-vr-teal' : 'text-vr-navy/40'}`}
+                                    className={`pb-6 text-[10px] font-bold uppercase tracking-[0.3em] transition-all relative ${activeTab === 'verification' ? 'text-vr-teal' : 'text-vr-cream/20 hover:text-vr-cream/40'}`}
                                 >
-                                    Verification Bio
-                                    {activeTab === 'verification' && <motion.div layoutId="tab" className="absolute bottom-0 left-0 right-0 h-1 bg-vr-teal rounded-full" />}
+                                    AUDIT PROTOCOLS
+                                    {activeTab === 'verification' && <motion.div layoutId="tab-underline" className="absolute bottom-0 left-0 right-0 h-[2px] bg-vr-teal shadow-[0_0_10px_#B8860B]" />}
                                 </button>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
                                 <AnimatePresence mode="wait">
                                     {activeTab === "listings" ? (
                                         agentProperties.map((property: Property, idx: number) => (
                                             <motion.div
                                                 key={property.id}
-                                                initial={{ opacity: 0, scale: 0.95 }}
-                                                animate={{ opacity: 1, scale: 1 }}
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, scale: 0.95 }}
-                                                transition={{ delay: idx * 0.1 }}
+                                                transition={{ delay: idx * 0.05 }}
                                             >
                                                 <PropertyCard {...property} />
                                             </motion.div>
@@ -157,36 +159,29 @@ export default function AgentProfile() {
                                         <motion.div
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            className="col-span-full bg-white p-8 rounded-[2rem] border border-vr-silver/30"
+                                            className="col-span-full bg-vr-iron p-10 border border-vr-silver/10 relative overflow-hidden"
                                         >
-                                            <div className="flex items-center gap-4 mb-6">
-                                                <div className="w-12 h-12 bg-vr-teal/10 rounded-xl flex items-center justify-center">
-                                                    <ShieldCheck className="text-vr-teal w-6 h-6" />
+                                            <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/p6.png')]" />
+                                            <div className="flex items-center gap-5 mb-10 relative z-10">
+                                                <div className="w-14 h-14 bg-vr-navy border border-vr-silver/10 flex items-center justify-center">
+                                                    <ShieldCheck className="text-vr-teal w-7 h-7" />
                                                 </div>
-                                                <h3 className="text-xl font-bold text-vr-navy">Identity & Verification Status</h3>
+                                                <h3 className="text-2xl font-serif font-bold text-vr-cream uppercase tracking-tight">Identity Audit Status</h3>
                                             </div>
-                                            <div className="space-y-6">
-                                                <div className="flex items-center justify-between p-4 bg-vr-gray rounded-2xl">
-                                                    <div className="flex items-center gap-3">
-                                                        <CheckCircle2 className="text-emerald-500 w-5 h-5" />
-                                                        <span className="font-semibold text-vr-navy">Government ID Verified</span>
+                                            <div className="space-y-4 relative z-10">
+                                                {[
+                                                    { label: "Government ID Verified", date: "Verified Nov 2023" },
+                                                    { label: "Facial Biometric Match", date: "Verified Dec 2023" },
+                                                    { label: "Verified Social Presence", date: "Linked & Audited" }
+                                                ].map((item, i) => (
+                                                    <div key={i} className="flex items-center justify-between p-6 bg-vr-navy border border-vr-silver/5">
+                                                        <div className="flex items-center gap-4">
+                                                            <div className="w-2 h-2 rounded-full bg-vr-teal shadow-[0_0_8px_#B8860B]" />
+                                                            <span className="text-[10px] font-bold text-vr-cream uppercase tracking-widest">{item.label}</span>
+                                                        </div>
+                                                        <span className="text-[8px] font-bold text-vr-cream/20 uppercase tracking-widest">{item.date}</span>
                                                     </div>
-                                                    <span className="text-xs text-vr-navy/40">Verified Nov 2023</span>
-                                                </div>
-                                                <div className="flex items-center justify-between p-4 bg-vr-gray rounded-2xl">
-                                                    <div className="flex items-center gap-3">
-                                                        <CheckCircle2 className="text-emerald-500 w-5 h-5" />
-                                                        <span className="font-semibold text-vr-navy">Facial Biometric Match</span>
-                                                    </div>
-                                                    <span className="text-xs text-vr-navy/40">Verified Dec 2023</span>
-                                                </div>
-                                                <div className="flex items-center justify-between p-4 bg-vr-gray rounded-2xl">
-                                                    <div className="flex items-center gap-3">
-                                                        <CheckCircle2 className="text-emerald-500 w-5 h-5" />
-                                                        <span className="font-semibold text-vr-navy">Verified Social Presence</span>
-                                                    </div>
-                                                    <span className="text-xs text-vr-navy/40">Linked</span>
-                                                </div>
+                                                ))}
                                             </div>
                                         </motion.div>
                                     )}
@@ -194,74 +189,69 @@ export default function AgentProfile() {
                             </div>
                         </div>
 
-                        {/* Sidebar Info */}
-                        <aside className="space-y-8">
+                        {/* Sidebar Info (Industrial) */}
+                        <aside className="space-y-12">
                             {/* Contact Card */}
-                            <div className="bg-white p-8 rounded-[2rem] border border-vr-silver/30 shadow-xl shadow-vr-navy/5">
-                                <h3 className="text-xl font-bold text-vr-navy mb-6">Contact Info</h3>
-                                <div className="space-y-5">
-                                    <a href={`tel:${agent.phone}`} className="flex items-center gap-4 group">
-                                        <div className="w-10 h-10 bg-vr-gray rounded-xl flex items-center justify-center group-hover:bg-vr-teal/10 transition-colors">
-                                            <Phone className="w-5 h-5 text-vr-navy/60 group-hover:text-vr-teal transition-colors" />
+                            <div className="bg-vr-iron border border-vr-silver/10 p-10 shadow-2xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-vr-teal/5 rounded-full -mr-16 -mt-16 blur-3xl pointer-events-none" />
+                                <h3 className="text-[10px] font-bold text-vr-teal uppercase tracking-[0.4em] mb-8">Registry Contact</h3>
+                                <div className="space-y-8">
+                                    <a href={`tel:${agent.phone}`} className="flex items-center gap-5 group">
+                                        <div className="w-12 h-12 bg-vr-navy border border-vr-silver/10 flex items-center justify-center group-hover:border-vr-teal/50 transition-heavy">
+                                            <Phone className="w-5 h-5 text-vr-cream/40 group-hover:text-vr-teal transition-heavy" />
                                         </div>
                                         <div>
-                                            <div className="text-xs font-bold text-vr-navy/30 uppercase tracking-widest">Phone</div>
-                                            <div className="font-semibold text-vr-navy">{agent.phone}</div>
+                                            <div className="text-[8px] font-bold text-vr-cream/20 uppercase tracking-widest mb-1">Authenticated Phone</div>
+                                            <div className="text-sm font-bold text-vr-cream group-hover:text-vr-teal transition-heavy">{agent.phone}</div>
                                         </div>
                                     </a>
-                                    <a href={`mailto:${agent.email}`} className="flex items-center gap-4 group">
-                                        <div className="w-10 h-10 bg-vr-gray rounded-xl flex items-center justify-center group-hover:bg-vr-teal/10 transition-colors">
-                                            <Mail className="w-5 h-5 text-vr-navy/60 group-hover:text-vr-teal transition-colors" />
+                                    <a href={`mailto:${agent.email}`} className="flex items-center gap-5 group">
+                                        <div className="w-12 h-12 bg-vr-navy border border-vr-silver/10 flex items-center justify-center group-hover:border-vr-teal/50 transition-heavy">
+                                            <Mail className="w-5 h-5 text-vr-cream/40 group-hover:text-vr-teal transition-heavy" />
                                         </div>
                                         <div>
-                                            <div className="text-xs font-bold text-vr-navy/30 uppercase tracking-widest">Email</div>
-                                            <div className="font-semibold text-vr-navy">{agent.email}</div>
+                                            <div className="text-[8px] font-bold text-vr-cream/20 uppercase tracking-widest mb-1">Audit Email</div>
+                                            <div className="text-sm font-bold text-vr-cream group-hover:text-vr-teal transition-heavy">{agent.email}</div>
                                         </div>
                                     </a>
                                 </div>
 
-                                <div className="h-px bg-vr-silver/30 my-8" />
+                                <div className="h-px bg-vr-silver/10 my-10" />
 
-                                <h3 className="text-xl font-bold text-vr-navy mb-6">Social Handle</h3>
-                                <div className="space-y-4">
-                                    <a href="#" className="flex items-center justify-between p-3 rounded-2xl border border-vr-silver/20 hover:border-vr-teal/30 hover:bg-vr-teal/5 transition-all group">
-                                        <div className="flex items-center gap-3">
-                                            <Instagram className="w-5 h-5 text-vr-navy/60" />
-                                            <span className="font-medium text-vr-navy">{agent.socials.instagram}</span>
-                                        </div>
-                                        <ExternalLink className="w-4 h-4 text-vr-navy/30" />
-                                    </a>
-                                    <a href="#" className="flex items-center justify-between p-3 rounded-2xl border border-vr-silver/20 hover:border-vr-teal/30 hover:bg-vr-teal/5 transition-all group">
-                                        <div className="flex items-center gap-3">
-                                            <Twitter className="w-5 h-5 text-vr-navy/60" />
-                                            <span className="font-medium text-vr-navy">{agent.socials.twitter}</span>
-                                        </div>
-                                        <ExternalLink className="w-4 h-4 text-vr-navy/30" />
-                                    </a>
-                                    <a href="#" className="flex items-center justify-between p-3 rounded-2xl border border-vr-silver/20 hover:border-vr-teal/30 hover:bg-vr-teal/5 transition-all group">
-                                        <div className="flex items-center gap-3">
-                                            <Globe className="w-5 h-5 text-vr-navy/60" />
-                                            <span className="font-medium text-vr-navy">{agent.socials.website}</span>
-                                        </div>
-                                        <ExternalLink className="w-4 h-4 text-vr-navy/30" />
-                                    </a>
+                                <h3 className="text-[10px] font-bold text-vr-teal uppercase tracking-[0.4em] mb-6">Social Handles</h3>
+                                <div className="space-y-3">
+                                    {[
+                                        { Icon: Instagram, handle: agent.socials.instagram },
+                                        { Icon: Twitter, handle: agent.socials.twitter },
+                                        { Icon: Globe, handle: agent.socials.website }
+                                    ].map((item, i) => (
+                                        <a key={i} href="#" className="flex items-center justify-between p-4 bg-vr-navy border border-vr-silver/5 hover:border-vr-teal/30 transition-all group">
+                                            <div className="flex items-center gap-4">
+                                                <item.Icon className="w-4 h-4 text-vr-cream/40 group-hover:text-vr-teal transition-heavy" />
+                                                <span className="text-[10px] font-bold text-vr-cream/60 group-hover:text-vr-cream transition-heavy uppercase tracking-widest">{item.handle}</span>
+                                            </div>
+                                            <ExternalLink className="w-3 h-3 text-vr-cream/10" />
+                                        </a>
+                                    ))}
                                 </div>
 
-                                <Button className="w-full mt-8 h-12 rounded-xl text-vr-navy border-vr-silver bg-vr-gray hover:bg-vr-silver/50" variant="outline">
-                                    <Phone className="w-4 h-4 mr-2" /> Request Call Back
-                                </Button>
+                                <button className="w-full mt-10 py-5 bg-vr-navy border border-vr-silver/10 text-[10px] font-bold text-vr-teal uppercase tracking-[0.3em] hover:bg-vr-teal hover:text-vr-navy transition-heavy shadow-xl border-b-4 border-vr-silver/5 active:border-b-0 active:translate-y-1">
+                                    <Phone className="w-4 h-4 mr-2 inline" /> Request Callback
+                                </button>
                             </div>
 
-                            {/* Trust Banner */}
-                            <div className="bg-vr-navy rounded-[2rem] p-8 text-white relative overflow-hidden">
-                                <BadgeCheck className="absolute -right-4 -bottom-4 w-24 h-24 text-white/5 rotate-12" />
-                                <h4 className="text-lg font-bold mb-2">Verified Guarantee</h4>
-                                <p className="text-sm text-white/60 mb-6">
-                                    This provider has been manually vetted by the VerifyRent team. All payments are secured via our Escrow system.
+                            {/* Trust Banner (Premium FORGE Style) */}
+                            <div className="p-8 border border-vr-teal/20 bg-gradient-to-br from-vr-teal/10 to-transparent relative overflow-hidden group">
+                                <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-heavy">
+                                    <ShieldCheck className="w-32 h-32 rotate-12" />
+                                </div>
+                                <h4 className="text-xl font-serif font-black text-vr-cream uppercase tracking-tight mb-4">Registry Guarantee</h4>
+                                <p className="text-[10px] text-vr-cream/40 font-bold uppercase tracking-widest leading-relaxed mb-8">
+                                    This provider has been manually vetted. All transactions are held in our kiln of trust.
                                 </p>
-                                <Button className="w-full bg-vr-teal hover:bg-vr-teal/90 rounded-xl">
+                                <button className="w-full py-4 bg-vr-teal text-vr-navy text-[10px] font-bold uppercase tracking-widest hover:bg-white transition-heavy">
                                     Learn More
-                                </Button>
+                                </button>
                             </div>
                         </aside>
                     </div>
